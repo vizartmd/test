@@ -1,29 +1,40 @@
-let num = 48;
+let money = +prompt("Your monthly bill?", ""),
+     time = prompt("Введите дату в формате YYYY-MM-DD", "");
 
-// if (num < 49) {
-//     console.log("Incorect!");
-// } else if (num > 100){
-//     console.log("to mutch!");
-// } else {
-//     console.log("Corect!");
-// }
 
-// (num == 50) ? console.log("Corect!") : console.log("Incorect!");
+let appData = {
+    budget: money,
+    expenses: {},
+    optionalExpenses: {},
+    income: [],
+    timeData: time,
+    savings: false
+};
 
-switch (num) {
-    case num < 49:
-        console.log("Incorect!");
-        break;
-    case num > 100:
-        console.log("to mutch!");
-        break;
-    case num > 80:
-        console.log("is alsow to mutch!");
-        break;
-    case 50:
-        console.log("Corect!");
-        break;
-    default:
-        console.log("Something was wrong!");
-        break;
-}
+    for (let i = 0; i < 2; i++) {
+        let a = prompt("Введите обязательную статью расходов в этом месяце", ""),
+            b = +prompt("Во сколько обойдется?", "");
+
+        if ((typeof(a)) === "" && (typeof(a) != null) && (typeof(b)) != null
+        && a != "" && b != "" && a.length < 50) {
+            console.log("done");
+            appData.expenses[a] = b;
+        } else {
+
+        }
+    }
+
+    appData.moneyPerDay = appData.budget / 30;
+
+    alert("Daly budget: " + appData.moneyPerDay);
+
+    if (appData.moneyPerDay < 100){
+        console.log("Daly min. enought");
+    } else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+        console.log("Midle level enought");
+    } else if (appData.moneyPerDay < 2000) {
+        console.log("High level enought");
+    } else {
+        console.log("Error");
+    }
+
